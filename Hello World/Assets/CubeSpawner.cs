@@ -9,7 +9,11 @@ public class CubeSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
         Instantiate(cubePrefabVar);
+=======
+        //Instantiate(cubePrefabVar);
+>>>>>>> f7df6143a1875f02efdccac4b6e069034ede29d9
     }
 
     // Update is called once per frame

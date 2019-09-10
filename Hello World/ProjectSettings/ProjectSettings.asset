@@ -4,7 +4,11 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
+<<<<<<< HEAD
   productGUID: 8a45e1b5857b0154085e11b075380d8d
+=======
+  productGUID: 484d7a37a61c2084dac991c6a10b5cee
+>>>>>>> f7df6143a1875f02efdccac4b6e069034ede29d9
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -105,7 +109,16 @@ PlayerSettings:
   xboxOneLoggingLevel: 1
   xboxOneDisableEsram: 0
   xboxOnePresentImmediateThreshold: 0
+<<<<<<< HEAD
   switchQueueCommandMemory: 0
+=======
+  switchQueueCommandMemory: 1048576
+  switchQueueControlMemory: 16384
+  switchQueueComputeMemory: 262144
+  switchNVNShaderPoolsGranularity: 33554432
+  switchNVNDefaultPoolsGranularity: 16777216
+  switchNVNOtherPoolsGranularity: 16777216
+>>>>>>> f7df6143a1875f02efdccac4b6e069034ede29d9
   vulkanEnableSetSRGBWrite: 0
   m_SupportedAspectRatios:
     4:3: 1
@@ -420,6 +433,10 @@ PlayerSettings:
   switchAllowsRuntimeAddOnContentInstall: 0
   switchDataLossConfirmation: 0
   switchUserAccountLockEnabled: 0
+<<<<<<< HEAD
+=======
+  switchSystemResourceMemory: 16777216
+>>>>>>> f7df6143a1875f02efdccac4b6e069034ede29d9
   switchSupportedNpadStyles: 3
   switchNativeFsCacheSize: 32
   switchIsHoldTypeHorizontal: 0
