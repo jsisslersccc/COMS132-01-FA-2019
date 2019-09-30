@@ -20,14 +20,12 @@ public class AppleTree : MonoBehaviour
     // Rate at which Apples will be instantiated
     public float secondsBetweenAppleDrops = 1f;
 
-    // Use this for initialization
     void Start()
     {
         // Dropping apples every second
         Invoke("DropApple", 2f);
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Basic movement
