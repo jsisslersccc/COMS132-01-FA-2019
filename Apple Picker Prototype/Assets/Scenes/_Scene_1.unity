@@ -348,5 +348,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3453071853036393850, guid: eaa5600c55ed73b41bd3eefb34b69a26,
+        type: 3}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453071853036393850, guid: eaa5600c55ed73b41bd3eefb34b69a26,
+        type: 3}
+      propertyPath: chanceToChangeDirections
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453071853036393850, guid: eaa5600c55ed73b41bd3eefb34b69a26,
+        type: 3}
+      propertyPath: secondsBetweenAppleDrops
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaa5600c55ed73b41bd3eefb34b69a26, type: 3}
