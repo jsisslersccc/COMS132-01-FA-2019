@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Basket : MonoBehaviour
 {
     [HeaderAttribute("Set Dynamically")]
     public Text scoreGT;
+    private int applesCaught = 0;
+    private ApplePicker applePicker;
 
     void Start()
     {
@@ -16,6 +19,7 @@ public class Basket : MonoBehaviour
         scoreGT = scoreGO.GetComponent<Text>();
         // Set the starting number of points to 0
         scoreGT.text = "0";
+        applePicker = FindObjectOfType<ApplePicker>();
     }
 
     void Update()
@@ -54,6 +58,12 @@ public class Basket : MonoBehaviour
             if (score > HighScore.score)
             {
                 HighScore.score = score;
+            }
+
+            if (++applesCaught >= applePicker.basketCapacity)
+            {
+                Debug.Log("next level");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
     }
