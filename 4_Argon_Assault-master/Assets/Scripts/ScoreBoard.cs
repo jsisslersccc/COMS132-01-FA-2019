@@ -19,5 +19,11 @@ public class ScoreBoard : MonoBehaviour
     {
         score = score + scoreIncrease;
         scoreText.text = score.ToString();
+
+        // Track the high score
+        if (score > HighScore.score)
+        {
+            HighScore.score = score;
+        }
     }
 }
