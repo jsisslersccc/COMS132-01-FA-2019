@@ -11,6 +11,7 @@ public class ApplePicker : MonoBehaviour
     public float basketBottomY = -14f;
     public float basketSpacingY = 2f;
     public List<GameObject> basketList;
+    public int basketCapacity = 50;
 
     // Use this for initialization
     void Start()
