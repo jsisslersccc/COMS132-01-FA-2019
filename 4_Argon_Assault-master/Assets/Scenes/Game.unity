@@ -10280,7 +10280,7 @@ PrefabInstance:
     - target: {fileID: 114626956481642706, guid: 0a39a8497812f514cba1e92b335da14a,
         type: 3}
       propertyPath: disableDeath
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a39a8497812f514cba1e92b335da14a, type: 3}
@@ -11514,7 +11514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4e5be965823c64490f2253f90ba606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reset: 1
+  reset: 0
 --- !u!114 &1784467409
 MonoBehaviour:
   m_ObjectHideFlags: 0
