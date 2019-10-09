@@ -24,15 +24,22 @@ public class Spawner : MonoBehaviour {
     public float attractPush = 2f;
     public float attactPushDist = 5f;
 
+    // LAB 1
+    public bool attackingCamera
+    {
+         get; private set;
+    }
+
     void Awake()
     {
         S = this;
         boids = new List<Boid>();
+        attackingCamera = false;
     }
 
     public void InstantiateBoid()
     {   
-        if (boids.Count < numBoids)
+        if (boids.Count < numBoids && !attackingCamera)
         {
             Invoke("InstantiateBoid", spawnDelay);
             Boid boid = Instantiate<Boid>(boidPrefab);
@@ -41,7 +48,14 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    // Use this for initialization
+    void Start () {
+		
+	}
+	
+	// Update is called once per frame
 	void Update () {
+        attackingCamera = Input.GetKey(KeyCode.A);
         InstantiateBoid();
 	}
 }

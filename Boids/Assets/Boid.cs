@@ -37,8 +37,35 @@ public class Boid : MonoBehaviour {
         transform.LookAt(pos + rigid.velocity);
     }
 
+    // Use this for initialization
+    void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        if (Spawner.S.attackingCamera)
+        {
+            transform.LookAt(Camera.main.transform);
+            transform.position = Vector3.MoveTowards(transform.position, Camera.main.transform.position, 50f * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, Camera.main.transform.position) < Mathf.Epsilon)
+            {
+                Spawner.boids.Remove(this);
+                Destroy(gameObject);
+            }
+        }
+    }
+
+
     void FixedUpdate()
     {
+        if (Spawner.S.attackingCamera)
+        {
+            rigid.velocity = Vector3.zero;
+            return;
+        }
+
         Vector3 vel = rigid.velocity;
         Spawner spn = Spawner.S;
 
