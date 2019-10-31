@@ -82,6 +82,8 @@ public class Slingshot : MonoBehaviour {
             projectile = null;
             MissionDemolition.ShotFired();
             ProjectileLine.S.poi = projectile;
+            AudioSource sfx = GetComponent<AudioSource>();
+            sfx.Play();
         }
     }
 }
