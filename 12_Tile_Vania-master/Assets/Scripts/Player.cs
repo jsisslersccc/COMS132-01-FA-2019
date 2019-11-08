@@ -10,6 +10,9 @@ public class Player : MonoBehaviour {
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
+    [SerializeField] float blinkInterval = .3f;
+    [SerializeField] float shieldInterval = 3f;
+    [SerializeField] int shieldCost = 100;
 
     // State
     bool isAlive = true;
@@ -20,6 +23,9 @@ public class Player : MonoBehaviour {
     CapsuleCollider2D myBodyCollider;
     BoxCollider2D myFeet;
     float gravityScaleAtStart;
+    float lastBlink = 0;
+    bool isShieldActive = false;
+    float shieldActivated;
 
     // Message then methods
     void Start() {
@@ -40,6 +46,48 @@ public class Player : MonoBehaviour {
         Jump();
         FlipSprite();
         Die();
+        ManageShield();
+        Blink();
+    }
+
+    void ManageShield()
+    {
+        if (isShieldActive)
+        {
+            if (Time.time - shieldActivated >= shieldInterval)
+            {
+                isShieldActive = false;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            GameSession gameSession = FindObjectOfType<GameSession>();
+            if (gameSession.GetScore() >= shieldCost)
+            {
+                gameSession.AddToScore(-shieldCost);
+                isShieldActive = true;
+                shieldActivated = Time.time;
+            }
+        }
+    }
+
+    void Blink()
+    {
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+
+        if (!isShieldActive)
+        {
+            renderer.enabled = true;
+            return;
+        }
+
+        float timeElapsedSinceLastBlink = Time.time - lastBlink;
+
+        if (timeElapsedSinceLastBlink > blinkInterval)
+        {
+            renderer.enabled = !renderer.enabled;
+            lastBlink = Time.time;
+        }
     }
 
     private void Run()
@@ -73,7 +121,7 @@ public class Player : MonoBehaviour {
 
     private void Jump()
     {
-        if (!myFeet.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
+        if (!isShieldActive && !myFeet.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
 
         if (CrossPlatformInputManager.GetButtonDown("Jump"))
         {
@@ -84,7 +132,7 @@ public class Player : MonoBehaviour {
 
     private void Die()
     {
-        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
+        if (!isShieldActive && myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
         {
             isAlive = false;
             myAnimator.SetTrigger("Dying");

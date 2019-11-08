@@ -38,6 +38,11 @@ public class GameSession : MonoBehaviour {
         scoreText.text = score.ToString();
     }
 
+    public float GetScore()
+    {
+        return score;
+    }
+
     public void ProcessPlayerDeath()
     {
         if (playerLives > 1)
