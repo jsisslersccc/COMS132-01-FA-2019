@@ -59,10 +59,10 @@ public class Player : MonoBehaviour {
                 isShieldActive = false;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (CrossPlatformInputManager.GetButtonDown("Fire1"))
         {
             GameSession gameSession = FindObjectOfType<GameSession>();
-            if (gameSession.GetScore() >= shieldCost)
+            if (gameSession && gameSession.GetScore() >= shieldCost)
             {
                 gameSession.AddToScore(-shieldCost);
                 isShieldActive = true;
